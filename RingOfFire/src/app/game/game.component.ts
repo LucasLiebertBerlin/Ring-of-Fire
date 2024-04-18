@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-game',
@@ -10,13 +11,40 @@ import { Component } from '@angular/core';
 })
 export class GameComponent {
   pickCardAnimation = false;
-  constructor() {
+  currentCard: string = '';
+  game!: Game;
 
+  constructor() { }
+
+  ngOnInit(): void {
+    this.newGame();
+  }
+
+
+  newGame() {
+    this.game = new Game();
+    console.log(this.game);
   }
 
   takeCard() {
-    this.pickCardAnimation = true;
-
+    const nextCard = this.game.stack.pop(); // pop returnt letzten wert aus dem array und löscht ihn daraus
+    if (!this.pickCardAnimation) {
+      if (nextCard !== undefined) {
+        this.currentCard = nextCard;
+        console.log(this.currentCard);
+      } else {
+        console.error('Keine weiteren Karten im Stapel!');
+      }
+      this.pickCardAnimation = true;
+      setTimeout(() => {
+        this.pickCardAnimation = false;
+      }, 1500);
+    }
   }
 
+
+
+
+
+  
 }
