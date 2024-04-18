@@ -1,0 +1,24 @@
+<div class="field">
+  <div class="card-stack">
+    <!-- <img
+      *ngFor="let c of [0, 1, 2, 3, 4]; let i = index"
+      [ngStyle]="{ 'right.px': i * 5 }"
+      src="assets/img/cards/card_cover.png"
+      alt=""
+    /> -->
+    @for (count of [0, 1, 2, 3, 4]; track count; let i = $index) {
+    <img
+      [ngStyle]="{ 'right.px': i * 5 }"
+      src="assets/img/cards/card_cover.png"
+      alt=""
+    />    }
+    <img (click)="takeCard()"
+      class="top-card"
+      style="right: 25px"
+      src="assets/img/cards/card_cover.png"
+      alt=""
+      [class.pick-card]="pickCardAnimation"
+    />
+
+  </div>
+</div>

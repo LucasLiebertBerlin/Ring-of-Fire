@@ -1,0 +1,36 @@
+.start-screen {
+    background-color: darkgray;
+    background-image: url('/assets/img/wood.png');
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+        height: 100vh;
+
+    }
+}
+
+.start-label-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 30vw;
+        height: auto;
+        &:hover {
+            filter: brightness(1.25);
+            cursor: pointer;
+        }
+    }
+}
