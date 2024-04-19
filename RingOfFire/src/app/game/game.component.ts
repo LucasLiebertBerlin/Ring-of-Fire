@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Game } from '../../models/game';
+import { PlayerComponent } from '../player/player.component';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PlayerComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
@@ -31,14 +32,18 @@ export class GameComponent {
     if (!this.pickCardAnimation) {
       if (nextCard !== undefined) {
         this.currentCard = nextCard;
-        console.log(this.currentCard);
       } else {
         console.error('Keine weiteren Karten im Stapel!');
       }
       this.pickCardAnimation = true;
+
+      console.log('new card:' + this.currentCard);
+      console.log('game is', this.game);
+
       setTimeout(() => {
+        this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 1500);
+      }, 1000);
     }
   }
 
@@ -46,5 +51,5 @@ export class GameComponent {
 
 
 
-  
+
 }
